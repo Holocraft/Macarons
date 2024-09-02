@@ -1,0 +1,56 @@
+@use "functions" as fn;
+@import "../src/components/nav-bar/nav-bar.scss";
+@import "../src/app/photos/album-card.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: fn.rem(20);
+  height: calc(100vh - 60px);
+  width: 100vw;
+  background: black;
+  overflow: hidden;
+  background: #c33764;
+  background: -webkit-linear-gradient(
+    rgba(29, 38, 113, 0.8),
+    rgba(195, 55, 100, 0.8)
+  );
+  background: linear-gradient(rgba(29, 38, 113, 0.8), rgba(195, 55, 100, 0.8));
+}
+
+h1,
+h2,
+h3,
+p {
+  color: #fff;
+}
+
+p {
+  font-weight: 500;
+}
+
+.logged-in-header {
+  height: 4rem;
+}
+
+.upload-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  & > *[data-ut-element="button"] {
+    color: #fff;
+    background-color: #f58a42;
+  }
+  & > *[data-ut-element="label"] {
+    color: #fff;
+  }
+  & > *[data-ut-element="allowed-content"] {
+    color: #fff;
+  }
+}
