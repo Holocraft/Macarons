@@ -9,7 +9,7 @@ export default async function Home() {
       {session ? (
         <div className='logged-in-header'>
           <h1>Macarons</h1>
-          <h3>Benicia mom's group</h3>
+          <h3>Benicia mom&apos;s group</h3>
           <UploadDnDPage />
         </div>
       ) : (
