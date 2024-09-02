@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+const emails = process.env.ALLOWED_EMAILS;
+
 export const options: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -29,12 +31,12 @@ export const options: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      const allowedEmails = process.env.ALLOWED_EMAILS.split(",");
+      const allowedEmails = emails?.split(",");
       // List of allowed emails
       // const allowedEmails = ["perrin1057@gmail.com"];
 
       // Check if the user's email is in the allowed list
-      if (allowedEmails.includes(user.email)) {
+      if (allowedEmails?.includes(user.email)) {
         return true;
       } else {
         return "/unauthorized";
