@@ -15,7 +15,7 @@ export default function AlbumCard({
   return (
     <Link href='/album'>
       <div className='album-card-container'>
-        <h3>{name}</h3>
+        <h3 className='album-card-title'>{name}</h3>
         <p>{description}</p>
         <Image src={image} alt='album image' width={300} height={200} />
       </div>
