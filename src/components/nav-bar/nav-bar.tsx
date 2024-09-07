@@ -4,6 +4,7 @@ import Link from "next/link";
 import { options } from "../../app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 import SignInOutButton from "../sign-in-out-button/sign-in-out-button";
+import paths from "../../paths";
 
 export default async function NavBar() {
   const session = await getServerSession(options);
@@ -14,10 +15,10 @@ export default async function NavBar() {
       </Link>
       <ul className='nav-bar-list'>
         <li>
-          <Link href={"/photos"}>Photos</Link>
+          <Link href={paths.photos()}>Photos</Link>
         </li>
         <li>
-          <Link href={"/events"}>Events</Link>
+          <Link href={paths.events()}>Events</Link>
         </li>
         <li>
           {session ? (

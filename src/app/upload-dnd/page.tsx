@@ -31,7 +31,7 @@ export default function UploadDnDPage() {
   );
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+    <>
       <UploadDropzone
         className='upload-container'
         endpoint='imageUploader'
@@ -47,6 +47,6 @@ export default function UploadDnDPage() {
         }}
       />
       {imgList}
-    </main>
+    </>
   );
 }

@@ -1,14 +1,11 @@
-import AlbumCard from "./album-card";
-import Me from "../../../public/michael.jpg";
+import prisma from "../../../lib/prisma";
+import Albums from "./albums";
 
-export default function Photos() {
+export default async function AlbumsPage() {
+  const albums = await prisma.album.findMany();
   return (
-    <div className='photos'>
-      <AlbumCard
-        name='Test Album'
-        description='Test description'
-        image={Me.src}
-      />
+    <div className='albums-page'>
+      <Albums albums={albums} />
     </div>
   );
 }

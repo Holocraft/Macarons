@@ -20,15 +20,12 @@ export const ourFileRouter = {
       const fileOverrides = files.map((file) => {
         return { ...file, customId: "custom-id" };
       });
-      console.log("🚀 ~ fileOverrides ~ fileOverrides:", fileOverrides);
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.id, [UTFiles]: fileOverrides };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("🚀 ~ .onUploadComplete ~ metadata:", metadata);
       // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete for userId:", metadata.userId);
 
       console.log("file url", file.url);
 

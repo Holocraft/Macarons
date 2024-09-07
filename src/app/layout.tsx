@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Source_Sans_3 } from "next/font/google";
 import "../App.scss";
 import "@uploadthing/react/styles.css";
 import NavBar from "@/components/nav-bar/nav-bar";
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <NavBar />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
