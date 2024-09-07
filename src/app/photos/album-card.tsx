@@ -13,11 +13,13 @@ export default function AlbumCard({
   image,
 }: AlbumImageProps) {
   return (
-    <Link href='/album'>
+    <Link href='/album' className='album-card-link'>
       <div className='album-card-container'>
-        <h3 className='album-card-title'>{title}</h3>
-        <p>{description}</p>
         <Image src={image} alt='album image' width={300} height={200} />
+        <div className='title-wrapper'>
+          <h3 className='album-card-title'>{title}</h3>
+          <p>{description}</p>
+        </div>
       </div>
     </Link>
   );

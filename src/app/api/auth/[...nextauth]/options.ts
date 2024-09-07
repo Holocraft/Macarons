@@ -32,8 +32,6 @@ export const options: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       const allowedEmails = emails?.split(",");
-      // List of allowed emails
-      // const allowedEmails = ["perrin1057@gmail.com"];
 
       // Check if the user's email is in the allowed list
       if (allowedEmails?.includes(user.email)) {

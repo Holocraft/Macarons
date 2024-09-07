@@ -1,9 +1,16 @@
 .albums-page {
   padding: 20px;
   .albums {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 20px;
     overflow-y: auto;
-    max-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 981px;
+    width: 100%;
+    .album {
+      width: 300px;
+    }
   }
 }

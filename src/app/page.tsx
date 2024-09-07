@@ -10,7 +10,6 @@ export default async function Home() {
         <div className='logged-in-header'>
           <h1>Macarons</h1>
           <h3>Benicia mom&apos;s group</h3>
-          <UploadDnDPage />
         </div>
       ) : (
         <div className='logged-out-header'>
