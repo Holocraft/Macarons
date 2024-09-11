@@ -41,19 +41,6 @@
         resize: none;
       }
     }
-    .upload-container {
-      background-color: rgba(255, 255, 255, 0.1);
-      & > *[data-ut-element="button"] {
-        color: #fff;
-        background-color: #f58a42;
-      }
-      & > *[data-ut-element="label"] {
-        color: #3f3844;
-      }
-      & > *[data-ut-element="allowed-content"] {
-        color: #3f3844;
-      }
-    }
     .button-wrapper {
       display: flex;
       justify-content: space-between;

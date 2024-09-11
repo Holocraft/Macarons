@@ -25,7 +25,7 @@ export default function FormButton({
       disabled={pending.pending}
       onClick={onClick}
     >
-      {pending.pending ? "Loading..." : children}
+      {pending.pending && buttonType === "submit" ? "Loading..." : children}
     </button>
   );
 }

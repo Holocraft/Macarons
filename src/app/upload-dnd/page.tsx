@@ -3,10 +3,14 @@
 import { useState } from "react";
 import "@uploadthing/react/styles.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { UploadDropzone } from "@/utils/uploadthing";
 
 export default function UploadDnDPage() {
   const [images, setImages] = useState<{ url: string; key: string }[]>([]);
+  const pathname = usePathname();
+  const segments = pathname.split("/");
+  const albumId = segments[segments.length - 1];
 
   const title = images.length ? (
     <>
@@ -35,9 +39,17 @@ export default function UploadDnDPage() {
       <UploadDropzone
         className='upload-container'
         endpoint='imageUploader'
-        onClientUploadComplete={(res) => {
-          console.log("🚀 ~ onClientUploadComplete ~ res:", res);
+        onClientUploadComplete={async (res) => {
           if (res) {
+            const imageUrls = res.map((file) => file.url);
+
+            await fetch("/api/album/images", {
+              method: "POST",
+              body: JSON.stringify({ albumId, imageUrls }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
             setImages(res);
           }
         }}

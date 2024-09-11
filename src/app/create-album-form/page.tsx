@@ -1,10 +1,8 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import UploadDnDPage from "../upload-dnd/page";
 import FormButton from "@/components/form-button/form-button";
 import * as actions from "@/actions";
-import Button from "@/components/button/button";
 import Link from "next/link";
 import paths from "@/paths";
 
@@ -37,10 +35,7 @@ export default function CreateAlbumForm() {
                 <div>{formState?.errors.description}</div>
               )}
             </div>
-            <UploadDnDPage />
-            {formState?.errors._form ? (
-              <div className='error'>{formState.errors._form.join(", ")}</div>
-            ) : null}
+            {formState?.errors.files && <div>{formState?.errors.files}</div>}
             <div className='button-wrapper'>
               <FormButton buttonType='submit' buttonStyle=' btn primary'>
                 Submit

@@ -53,8 +53,7 @@ export async function createAlbum(
         title: result.data.title,
         description: result.data.description,
         // userId: session.user.email,
-        image:
-          "https://utfs.io/f/54b68b52-493c-41bf-9dc8-c5ba6b9efc44-hfq42v.jpg",
+        // images: [],
       },
     });
   } catch (error: unknown) {

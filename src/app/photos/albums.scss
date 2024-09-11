@@ -14,3 +14,17 @@
     }
   }
 }
+
+.upload-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  & > *[data-ut-element="button"] {
+    color: #fff;
+    background-color: #f58a42;
+  }
+  & > *[data-ut-element="label"] {
+    color: #fff;
+  }
+  & > *[data-ut-element="allowed-content"] {
+    color: #fff;
+  }
+}
