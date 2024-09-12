@@ -1,6 +1,6 @@
 import prisma from "../../../lib/prisma";
 import Button from "@/components/button/button";
-import AlbumCard from "./album-card";
+import AlbumCard from "./album-card/album-card";
 import Link from "next/link";
 import paths from "@/paths";
 
@@ -17,7 +17,6 @@ export default async function AlbumsPage() {
       </Link>
       <div className='albums'>
         {albums?.map((album) => {
-          console.log("🚀 ~ {albums?.map ~ album:", album);
           return (
             <div className='album' key={album.id}>
               <AlbumCard

@@ -1,13 +1,14 @@
 @use "functions" as fn;
 @import "../src/components/nav-bar/nav-bar.scss";
-@import "../src/app/photos/album-card.scss";
+@import "../src/app/photos/album-card/album-card.scss";
+@import "../src/app/photos/[albumId]/album-details.scss";
+@import "../src/app/photos/album-images/album-images.scss";
 @import "../src/app/photos/albums.scss";
 @import "../src/components/button/button.scss";
 @import "../src/app/create-album-form/create-album-form.scss";
 
 * {
   box-sizing: border-box;
-  font-family: "Source Sans 3", sans-serif;
 }
 
 html {
@@ -20,10 +21,6 @@ body {
   width: 100vw;
   background: #c33764;
 }
-
-// main {
-//   overflow: hidden;
-// }
 
 h1,
 h2,

@@ -47,13 +47,11 @@ export async function createAlbum(
 
   let post;
   try {
-    await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate an API call
     post = await prisma.album.create({
       data: {
         title: result.data.title,
         description: result.data.description,
         // userId: session.user.email,
-        // images: [],
       },
     });
   } catch (error: unknown) {
