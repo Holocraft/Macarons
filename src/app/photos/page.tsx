@@ -23,7 +23,7 @@ export default async function AlbumsPage() {
                 id={album.id}
                 title={album.title}
                 description={album.description}
-                image={album.images[0].url}
+                image={album.images[0]?.url}
               />
             </div>
           );
