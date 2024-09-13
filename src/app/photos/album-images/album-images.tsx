@@ -19,7 +19,13 @@ export default function AlbumImages({ album }) {
             key={image.url}
             onClick={() => setOpen(true)}
           >
-            <Image src={image.url} alt='image' width={300} height={300} />
+            <Image
+              src={image.url}
+              alt='image'
+              width={300}
+              height={300}
+              style={{ objectFit: "contain" }}
+            />
           </div>
         );
       })}
