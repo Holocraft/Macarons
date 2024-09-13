@@ -8,7 +8,6 @@ import NextJsImage from "@/components/lightbox-image";
 
 export default function AlbumImages({ album }) {
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
 
   return (
     <div className='album-images-container'>
@@ -22,9 +21,9 @@ export default function AlbumImages({ album }) {
             <Image
               src={image.url}
               alt='image'
-              width={300}
-              height={300}
-              style={{ objectFit: "contain" }}
+              fill
+              sizes='(max-width: 768px) 100vw (max-width: 1200px) 50vw, 33vw'
+              style={{ objectFit: "cover" }}
             />
           </div>
         );
