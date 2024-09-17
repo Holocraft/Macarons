@@ -14,7 +14,21 @@
       height: 1rem;
     }
   }
+  .album-title,
+  .album-description {
+    margin-bottom: 20px;
+  }
+  .album-description {
+    font-size: fn.rem(18);
+  }
+  .album-info {
+    font-size: fn.rem(14);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
   .uploadthing-container {
     width: 500px;
+    margin: 20px 0;
   }
 }

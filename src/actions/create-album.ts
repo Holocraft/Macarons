@@ -51,7 +51,8 @@ export async function createAlbum(
       data: {
         title: result.data.title,
         description: result.data.description,
-        // userId: session.user.email,
+        userId: session.user.email,
+        userName: session.user.name,
       },
     });
   } catch (error: unknown) {
@@ -70,7 +71,6 @@ export async function createAlbum(
     }
   }
   revalidatePath(paths.photos());
-  redirect(paths.photos());
   return {
     errors: {}, // Return an empty errors object
   };

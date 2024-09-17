@@ -12,7 +12,7 @@ const paths = {
     return "/create-album-form";
   },
   album(albumId: string) {
-    return `/album/${albumId}`;
+    return `/photos/${albumId}`;
   },
 };
 

@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={sourceSans3.className}>
-        <NavBar />
         <main>{children}</main>
       </body>
     </html>

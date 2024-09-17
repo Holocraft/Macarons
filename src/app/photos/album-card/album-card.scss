@@ -11,7 +11,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 10px;
+      padding: 20px 20px;
       h3,
       p {
         width: 250px;
@@ -19,6 +19,11 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         color: #3f3844;
+      }
+      .album-card-info {
+        font-size: fn.rem(14);
+        font-weight: 400;
+        font-style: italic;
       }
     }
     img {

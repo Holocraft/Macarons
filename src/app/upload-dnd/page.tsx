@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import "@uploadthing/react/styles.css";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UploadDropzone } from "@/utils/uploadthing";
 

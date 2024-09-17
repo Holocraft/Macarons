@@ -8,15 +8,21 @@ import NextJsImage from "@/components/lightbox-image";
 
 export default function AlbumImages({ album }) {
   const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const handleClick = (index: number) => {
+    setOpen(true);
+    setIndex(index);
+  };
 
   return (
     <div className='album-images-container'>
-      {album?.images?.map((image) => {
+      {album?.images?.map((image, index: number) => {
         return (
           <div
             className='album-image'
             key={image.url}
-            onClick={() => setOpen(true)}
+            onClick={() => handleClick(index)}
           >
             <Image
               src={image.url}
@@ -33,6 +39,7 @@ export default function AlbumImages({ album }) {
         close={() => setOpen(false)}
         slides={album?.images?.map((photo) => ({ src: photo.url }))}
         render={{ slide: NextJsImage }}
+        index={index}
       />
     </div>
   );

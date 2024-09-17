@@ -7,6 +7,8 @@ type AlbumImageProps = {
   title: string;
   description: string;
   image: string;
+  createdAt: Date;
+  userName: string;
 };
 
 export default function AlbumCard({
@@ -14,6 +16,8 @@ export default function AlbumCard({
   title,
   description,
   image,
+  createdAt,
+  userName,
 }: AlbumImageProps) {
   return (
     <Link href={`${paths.photos()}/${id}`} className='album-card-link'>
@@ -21,7 +25,9 @@ export default function AlbumCard({
         <Image src={image} alt='album image' width={300} height={200} />
         <div className='title-wrapper'>
           <h3 className='album-card-title'>{title}</h3>
-          <p>{description}</p>
+          <p className='album-card-info'>{`Posted by: ${userName} on ${createdAt.toLocaleDateString(
+            "en-US"
+          )}`}</p>
         </div>
       </div>
     </Link>

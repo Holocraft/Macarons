@@ -22,6 +22,7 @@ export default async function NavBar() {
           <Link href={paths.events()}>Events</Link>
         </li> */}
         <li>
+          {/* TODO: refactor this to be a more readable component */}
           {session ? (
             <SignInOutButton isSignIn={false} />
           ) : (

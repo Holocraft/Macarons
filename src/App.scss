@@ -25,10 +25,61 @@ body {
 h1,
 h2,
 h3,
+h4,
 p {
   color: #fff;
+  margin: 0;
 }
 
 p {
   font-weight: 500;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1,
+  h3 {
+    opacity: 0;
+  }
+  h1 {
+    animation: slideInLeft 1s ease-in-out forwards;
+    font-size: fn.rem(70);
+  }
+  h3 {
+    animation: slideInLeft 1s ease-in-out forwards;
+    animation-delay: 0.4s;
+    font-size: fn.rem(40);
+  }
+}
+
+.macarons {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0)
+    ),
+    url("../public/banner.webp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  .content {
+    position: relative;
+    z-index: 2;
+  }
 }
