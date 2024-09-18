@@ -70,7 +70,7 @@ export async function createAlbum(
       };
     }
   }
-  revalidatePath(paths.photos());
+  redirect("/photos");
   return {
     errors: {}, // Return an empty errors object
   };

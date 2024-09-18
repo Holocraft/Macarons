@@ -35,7 +35,6 @@ export default function CreateAlbumForm() {
                 <div>{formState?.errors.description}</div>
               )}
             </div>
-            {formState?.errors.files && <div>{formState?.errors.files}</div>}
             <div className='button-wrapper'>
               <FormButton buttonType='submit' buttonStyle=' btn primary'>
                 Submit

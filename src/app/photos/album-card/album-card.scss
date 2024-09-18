@@ -6,19 +6,32 @@
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
+    .image-container {
+      position: relative;
+      height: 200px;
+      width: 100%;
+    }
     .title-wrapper {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       padding: 20px 20px;
+      width: 300px;
+      overflow: hidden;
       h3,
       p {
-        width: 250px;
-        overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         color: #3f3844;
+      }
+      .photo-count {
+        display: flex;
+        align-items: center;
+        svg {
+          height: 15px;
+          color: gray;
+          margin-right: 5px;
+          margin-bottom: 2px;
+        }
       }
       .album-card-info {
         font-size: fn.rem(14);
@@ -27,6 +40,7 @@
       }
     }
     img {
+      max-width: 100%;
       object-fit: cover;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;

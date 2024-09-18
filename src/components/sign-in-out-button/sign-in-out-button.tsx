@@ -10,11 +10,11 @@ export default function SignInOutButton({ isSignIn }: SignInOutButtonProps) {
   return (
     <>
       {isSignIn ? (
-        <button className='btn primary' onClick={() => signIn()}>
+        <button className='btn sign-on' onClick={() => signIn()}>
           Sign In
         </button>
       ) : (
-        <button className='btn primary' onClick={() => signOut()}>
+        <button className='btn sign-on' onClick={() => signOut()}>
           Sign Out
         </button>
       )}

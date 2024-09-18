@@ -1,7 +1,7 @@
 import prisma from "../../../lib/prisma";
+import Link from "next/link";
 import Button from "@/components/button/button";
 import AlbumCard from "./album-card/album-card";
-import Link from "next/link";
 import paths from "@/paths";
 
 export default async function AlbumsPage() {
@@ -14,7 +14,7 @@ export default async function AlbumsPage() {
     <>
       <div className='albums-page'>
         <div className='albums-container'>
-          <Link href={paths.createAlbumForm()}>
+          <Link href={paths.createAlbumForm()} className='add-album'>
             <Button buttonStyle='btn primary'>Add Album</Button>
           </Link>
           <div className='albums'>
@@ -26,6 +26,7 @@ export default async function AlbumsPage() {
                     title={album.title}
                     description={album.description}
                     image={album.images[0]?.url}
+                    images={album.images}
                     createdAt={album.createdAt}
                     userName={album.userName}
                   />

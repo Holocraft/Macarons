@@ -3,16 +3,29 @@
   .albums-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    .add-album {
+      align-self: flex-end;
+      margin-bottom: 20px;
+    }
     .albums {
       display: grid;
-      grid-template-columns: repeat(3, 300px);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      overflow-y: auto;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 981px;
-      width: 100%;
+    }
+    @media (max-width: 1300px) {
+      .albums {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 980px) {
+      .albums {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 660px) {
+      .albums {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 }
