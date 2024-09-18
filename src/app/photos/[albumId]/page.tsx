@@ -3,7 +3,6 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import prisma from "../../../../lib/prisma";
 import UploadDnDPage from "@/app/upload-dnd/page";
 import AlbumImages from "@/app/photos/album-images/album-images";
-import NavBar from "@/components/nav-bar/nav-bar";
 import Link from "next/link";
 import paths from "@/paths";
 
@@ -20,7 +19,6 @@ export default async function Album({ params }) {
 
   return (
     <>
-      <NavBar />
       <div className='album-details'>
         <Link href={paths.photos()} className='back-link'>
           <FontAwesomeIcon icon={faArrowLeft} />

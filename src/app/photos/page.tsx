@@ -3,7 +3,6 @@ import Button from "@/components/button/button";
 import AlbumCard from "./album-card/album-card";
 import Link from "next/link";
 import paths from "@/paths";
-import NavBar from "@/components/nav-bar/nav-bar";
 
 export default async function AlbumsPage() {
   const albums = await prisma.album.findMany({
@@ -13,7 +12,6 @@ export default async function AlbumsPage() {
   });
   return (
     <>
-      <NavBar />
       <div className='albums-page'>
         <div className='albums-container'>
           <Link href={paths.createAlbumForm()}>
