@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import placeholderImage from "../../../../public/placeholder.jpg";
 
 type AlbumImageProps = {
   id: string;
@@ -17,7 +18,6 @@ type AlbumImageProps = {
 export default function AlbumCard({
   id,
   title,
-  description,
   image,
   images,
   createdAt,
@@ -28,7 +28,7 @@ export default function AlbumCard({
       <div className='album-card-container'>
         <div className='image-container'>
           <Image
-            src={image}
+            src={image || placeholderImage}
             alt='album image'
             fill
             style={{ objectFit: "cover" }}

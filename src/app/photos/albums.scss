@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     .add-album {
-      align-self: flex-end;
+      align-self: flex-start;
       margin-bottom: 20px;
     }
     .albums {
@@ -31,15 +31,18 @@
 }
 
 .upload-container {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #fff;
   & > *[data-ut-element="button"] {
     color: #fff;
     background-color: #f58a42;
   }
+  & > *[data-ut-element="upload-icon"] {
+    color: #acacac;
+  }
   & > *[data-ut-element="label"] {
-    color: #fff;
+    color: #3f3844;
   }
   & > *[data-ut-element="allowed-content"] {
-    color: #fff;
+    color: #3f3844;
   }
 }
