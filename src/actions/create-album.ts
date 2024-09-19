@@ -1,16 +1,16 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import prisma from "../../lib/prisma";
 import { z } from "zod";
 import { getServerSession } from "next-auth";
 import { options } from "../app/api/auth/[...nextauth]/options";
 import paths from "@/paths";
+import sanitizeInput from "@/utils/sanitize-html";
 
 const createPostSchema = z.object({
-  title: z.string().min(3),
-  description: z.string().min(10),
+  title: z.string().min(3).max(30),
+  description: z.string().min(10).max(500),
 });
 
 interface CreatePostFormState {
@@ -47,10 +47,12 @@ export async function createAlbum(
 
   let post;
   try {
+    const sanitizedTitle = sanitizeInput(result.data.title);
+    const sanitizedDescription = sanitizeInput(result.data.description);
     post = await prisma.album.create({
       data: {
-        title: result.data.title,
-        description: result.data.description,
+        title: sanitizedTitle,
+        description: sanitizedDescription,
         userId: session.user.email,
         userName: session.user.name,
       },
@@ -70,7 +72,7 @@ export async function createAlbum(
       };
     }
   }
-  redirect("/photos");
+  redirect(paths.photos());
   return {
     errors: {}, // Return an empty errors object
   };

@@ -27,6 +27,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "react-loader-spinner": "^6.1.6",
+    "sanitize-html": "^2.13.0",
     "sharp": "^0.33.5",
     "uploadthing": "^6.13.3",
     "yet-another-react-lightbox": "^3.21.5",
