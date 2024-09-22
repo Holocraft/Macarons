@@ -15,6 +15,7 @@ export default async function Album({ params }) {
     },
     include: {
       images: true,
+      user: true,
     },
   });
 
@@ -28,7 +29,7 @@ export default async function Album({ params }) {
         <h1 className='album-title'>{album?.title}</h1>
         <p className='album-description'>{album?.description}</p>
         <p className='album-info'>{`Posted by: ${
-          album?.userName
+          album?.user?.name
         } on ${album?.createdAt.toLocaleDateString("en-US")}`}</p>
         {album?.images.length === 0 ? (
           <h4>No images yet. Upload images below.</h4>
