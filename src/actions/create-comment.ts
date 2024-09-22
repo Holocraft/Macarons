@@ -1,30 +1,29 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import prisma from "../../lib/prisma";
 import { z } from "zod";
 import { getServerSession } from "next-auth";
 import { options } from "../app/api/auth/[...nextauth]/options";
 import paths from "@/paths";
 import sanitizeInput from "@/utils/sanitize-html";
+import { revalidatePath } from "next/cache";
 
 const createPostSchema = z.object({
-  title: z.string().min(3).max(30),
-  description: z.string().min(10).max(500),
+  comment: z.string().min(4).max(500),
+  albumId: z.string(),
 });
 
-interface CreatePostFormState {
+interface CreateCommentFormState {
   errors: {
-    title?: string[];
-    description?: string[];
+    comment?: string[];
     _form?: string[];
   };
 }
 
-export async function createAlbum(
-  formState: CreatePostFormState,
+export async function createComment(
+  formState: CreateCommentFormState,
   formData: FormData
-): Promise<CreatePostFormState> {
+): Promise<CreateCommentFormState> {
   const session = await getServerSession(options);
   const user = await prisma.user.findUnique({
     where: { email: session?.user?.email },
@@ -38,9 +37,10 @@ export async function createAlbum(
     };
   }
   const result = createPostSchema.safeParse({
-    title: formData.get("title"),
-    description: formData.get("description"),
+    comment: formData.get("comment"),
+    albumId: formData.get("albumId"),
   });
+  console.log("🚀 ~ result:", result);
 
   if (!result.success) {
     return {
@@ -58,14 +58,13 @@ export async function createAlbum(
 
   let post;
   try {
-    const sanitizedTitle = sanitizeInput(result.data.title);
-    const sanitizedDescription = sanitizeInput(result.data.description);
-    post = await prisma.album.create({
+    const sanitizedComment = sanitizeInput(result.data.comment);
+    post = await prisma.comment.create({
       data: {
-        title: sanitizedTitle,
-        description: sanitizedDescription,
-        userId: user.id,
-        userName: session.user.name,
+        content: sanitizedComment,
+        albumId: result.data.albumId,
+        authorId: user.id,
+        // author: user.name,
       },
     });
   } catch (error: unknown) {
@@ -78,12 +77,12 @@ export async function createAlbum(
     } else {
       return {
         errors: {
-          _form: ["Failed to create album"],
+          _form: ["Failed to create comment"],
         },
       };
     }
   }
-  redirect(paths.photos());
+  revalidatePath(paths.album(result.data.albumId));
   return {
     errors: {},
   };

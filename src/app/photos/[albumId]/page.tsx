@@ -5,6 +5,7 @@ import UploadDnDPage from "@/app/upload-dnd/page";
 import AlbumImages from "@/app/photos/album-images/album-images";
 import Link from "next/link";
 import paths from "@/paths";
+import Comments from "@/components/comments/comments";
 
 export default async function Album({ params }) {
   const { albumId } = params;
@@ -34,6 +35,7 @@ export default async function Album({ params }) {
         ) : (
           <AlbumImages album={album} />
         )}
+        <Comments params={params} />
         <div className='uploadthing-container'>
           <UploadDnDPage />
         </div>

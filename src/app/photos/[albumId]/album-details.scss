@@ -5,7 +5,7 @@
   h1,
   h4,
   p {
-    color: #3f3844;
+    color: $font-color;
   }
   .back-link {
     display: flex;
@@ -13,7 +13,7 @@
     margin-right: auto;
     margin-left: 95px;
     text-decoration: none;
-    color: #3f3844;
+    color: $font-color;
     svg {
       margin-right: 5px;
       height: 1rem;

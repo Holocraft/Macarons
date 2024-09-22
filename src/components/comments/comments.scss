@@ -1,0 +1,27 @@
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  border: 1px solid #d3d3d3;
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 20px;
+  border-radius: 8px;
+}
+.comment-input-container {
+  display: flex;
+  flex-direction: column;
+  .comment-input {
+    padding: 20px;
+    margin: 5px 20px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+  }
+  .btn {
+    &.primary {
+      width: 100px;
+      margin: 5px 20px;
+    }
+  }
+}

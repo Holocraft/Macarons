@@ -41,7 +41,7 @@ export default function Contact() {
           <label htmlFor='message'>Message</label>
           <textarea
             rows={4}
-            placeholder='Type your message'
+            placeholder='Tell us who you are and who your little Macaron is!'
             {...register("message", { required: true })}
           ></textarea>
         </div>

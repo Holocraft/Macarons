@@ -40,9 +40,9 @@
     color: #acacac;
   }
   & > *[data-ut-element="label"] {
-    color: #3f3844;
+    color: $font-color;
   }
   & > *[data-ut-element="allowed-content"] {
-    color: #3f3844;
+    color: $font-color;
   }
 }

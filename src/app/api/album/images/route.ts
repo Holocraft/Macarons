@@ -6,7 +6,7 @@ import paths from "@/paths";
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
     const body = await req.json();
-    const { albumId, imageUrls } = body;
+    const { albumId, imageUrls, userId } = body;
     if (!albumId || !imageUrls) {
       return new Response(JSON.stringify({ message: "Missing data" }), {
         status: 400,
@@ -17,6 +17,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       data: imageUrls?.map((url: string) => ({
         url,
         albumId,
+        userId,
       })),
     });
     revalidatePath(paths.album(albumId), "page");

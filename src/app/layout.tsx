@@ -6,6 +6,7 @@ import NavBar from "@/components/nav-bar/nav-bar";
 import BackgroundWrapper from "@/components/background-wrapper";
 import { options } from "../app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
+import SessionProviderWrapper from "@/components/session-wrapper";
 
 const sourceSans3 = Source_Sans_3({ subsets: ["latin"] });
 
@@ -23,12 +24,14 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body className={sourceSans3.className}>
-        <BackgroundWrapper session={session}>
-          <div className='content'>
-            <NavBar />
-            <main>{children}</main>
-          </div>
-        </BackgroundWrapper>
+        <SessionProviderWrapper session={session}>
+          <BackgroundWrapper session={session}>
+            <div className='content'>
+              <NavBar />
+              <main>{children}</main>
+            </div>
+          </BackgroundWrapper>
+        </SessionProviderWrapper>
       </body>
     </html>
   );

@@ -1,0 +1,12 @@
+.comment-container {
+  border: 1px solid #d3d3d3;
+  background-color: #fff;
+  padding: 20px;
+  margin: 5px 20px;
+  border-radius: 8px;
+  .comment-user {
+    font-size: fn.rem(12);
+    font-style: italic;
+    font-weight: 400;
+  }
+}

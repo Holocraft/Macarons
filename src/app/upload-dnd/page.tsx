@@ -3,11 +3,14 @@
 import "@uploadthing/react/styles.css";
 import { usePathname } from "next/navigation";
 import { UploadDropzone } from "@/utils/uploadthing";
+import { useSession } from "next-auth/react";
 
 export default function UploadDnDPage() {
+  const { data: session } = useSession();
   const pathname = usePathname();
   const segments = pathname.split("/");
   const albumId = segments[segments.length - 1];
+  const userId = session?.user?.id;
 
   return (
     <>
@@ -20,7 +23,7 @@ export default function UploadDnDPage() {
 
             await fetch("/api/album/images", {
               method: "POST",
-              body: JSON.stringify({ albumId, imageUrls }),
+              body: JSON.stringify({ albumId, imageUrls, userId }),
               headers: {
                 "Content-Type": "application/json",
               },

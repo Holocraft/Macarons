@@ -9,7 +9,7 @@
     padding: 0 20px;
   }
   h3 {
-    color: #fff;
+    color: $font-color;
   }
   .form-wrapper {
     display: flex;
@@ -25,7 +25,7 @@
       flex-direction: column;
       label {
         margin-bottom: fn.rem(10);
-        color: #3f3844;
+        color: $font-color;
       }
       input,
       textarea {
@@ -36,9 +36,6 @@
         border-radius: 4px;
         transition: border-color 0.3s ease;
         margin-bottom: fn.rem(30);
-      }
-      textarea {
-        resize: none;
       }
     }
     .button-wrapper {
