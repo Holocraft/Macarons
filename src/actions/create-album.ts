@@ -64,8 +64,9 @@ export async function createAlbum(
       data: {
         title: sanitizedTitle,
         description: sanitizedDescription,
-        userId: user.id,
-        userName: session.user.name,
+        user: {
+          connect: { id: user.id },
+        },
       },
     });
   } catch (error: unknown) {

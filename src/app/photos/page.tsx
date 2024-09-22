@@ -8,6 +8,7 @@ export default async function AlbumsPage() {
   const albums = await prisma.album.findMany({
     include: {
       images: true,
+      user: true,
     },
   });
   return (
@@ -28,7 +29,7 @@ export default async function AlbumsPage() {
                     image={album.images[0]?.url}
                     images={album.images}
                     createdAt={album.createdAt}
-                    userName={album.userName}
+                    userName={album.user?.name}
                   />
                 </div>
               );
