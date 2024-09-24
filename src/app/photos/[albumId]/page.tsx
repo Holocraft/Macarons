@@ -1,3 +1,5 @@
+import { getServerSession } from "next-auth";
+import { options } from "../../api/auth/[...nextauth]/options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import prisma from "../../../../lib/prisma";
@@ -9,6 +11,7 @@ import Comments from "@/components/comments/comments";
 
 export default async function Album({ params }) {
   const { albumId } = params;
+  const session = await getServerSession(options);
   const album = await prisma.album.findUnique({
     where: {
       id: albumId,
@@ -34,7 +37,7 @@ export default async function Album({ params }) {
         {album?.images.length === 0 ? (
           <h4>No images yet. Upload images below.</h4>
         ) : (
-          <AlbumImages album={album} />
+          <AlbumImages album={album} session={session} />
         )}
         <Comments params={params} />
         <div className='uploadthing-container'>

@@ -1,0 +1,28 @@
+.confirmation-modal-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+  padding: 60px;
+  border-radius: 8px;
+  .confirmation-modal {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      color: $font-color;
+      margin-bottom: 40px;
+    }
+    .button-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+.mask {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: -100vh;
+  bottom: -100vh;
+  left: 0;
+  right: 0;
+}
