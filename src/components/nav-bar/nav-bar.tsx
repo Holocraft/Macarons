@@ -29,7 +29,9 @@ export default async function NavBar() {
             <SignInOutButton isSignIn />
           )}
         </li>
-        <li className='signed-in'>{`Signed in as ${session?.user?.name}`}</li>
+        {session ? (
+          <li className='signed-in'>{`Signed in as ${session?.user?.name}`}</li>
+        ) : null}
       </ul>
     </div>
   );
