@@ -5,18 +5,30 @@ import { options } from "@/app/api/auth/[...nextauth]/options";
 
 const f = createUploadthing();
 
-// FileRouter for your app, can contain multiple FileRoutes
+const allowedFileTypes = ["image/jpeg", "image/png", "image/webp"];
+
 export const ourFileRouter = {
-  // Define as many FileRoutes as you like, each with a unique routeSlug
-  imageUploader: f({ image: { maxFileSize: "8MB", maxFileCount: 50 } })
-    // Set permissions and file types for this FileRoute
+  imageUploader: f({
+    image: {
+      maxFileSize: "8MB",
+      maxFileCount: 50,
+    },
+  })
     .middleware(async ({ req, files }) => {
       // This code runs on your server before upload
       const session = await getServerSession(options);
       const user = await session?.user;
 
-      // If you throw, the user will not be able to upload
       if (!user) throw new UploadThingError("Unauthorized");
+
+      const invalidFiles = files.filter(
+        (file) => !allowedFileTypes.includes(file.type)
+      );
+      if (invalidFiles.length > 0) {
+        throw new UploadThingError(
+          "Invalid file type. Only JPEG, PNG, and WEBP are allowed. Please refresh the page and try again."
+        );
+      }
 
       const fileOverrides = files.map((file) => {
         return { ...file };
