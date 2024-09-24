@@ -9,6 +9,7 @@
 @import "../src/components/nav-bar/nav-bar.scss";
 @import "../src/components/comments/comments.scss";
 @import "../src/components/comment/comment.scss";
+@import "../src/components/confirmation-modal/confirmation-modal.scss";
 @import "../src/app/create-album-form/create-album-form.scss";
 
 * {
@@ -23,7 +24,7 @@ body {
   margin: 0;
   height: calc(100vh - 60px);
   width: 100vw;
-  background-color: #e3e3e3;
+  background-color: #fff;
 }
 
 h1,
