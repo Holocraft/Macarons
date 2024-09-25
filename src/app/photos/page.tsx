@@ -11,7 +11,7 @@ export default async function AlbumsPage() {
       user: true,
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
 
