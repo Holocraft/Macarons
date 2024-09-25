@@ -11,8 +11,11 @@
     flex-direction: column;
     background-color: #fff;
     padding: 20px;
-    width: 30vw;
+    width: 100%; /* The form will take up the full width of its container */
+    max-width: 600px; /* The form won’t exceed 600px wide */
+    min-width: 300px;
     border-radius: 8px;
+    border: 1px solid #bab6b6;
     label,
     input,
     textarea {
