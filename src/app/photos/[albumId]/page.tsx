@@ -22,6 +22,10 @@ export default async function Album({ params }) {
     },
   });
 
+  const currentUser = await prisma.user.findUnique({
+    where: { email: session?.user?.email },
+  });
+
   return (
     <>
       <div className='album-details'>
@@ -37,7 +41,11 @@ export default async function Album({ params }) {
         {album?.images.length === 0 ? (
           <h4>No images yet. Upload images below.</h4>
         ) : (
-          <AlbumImages album={album} session={session} />
+          <AlbumImages
+            album={album}
+            session={session}
+            isAdmin={currentUser?.isAdmin}
+          />
         )}
         <Comments params={params} />
         <div className='uploadthing-container'>

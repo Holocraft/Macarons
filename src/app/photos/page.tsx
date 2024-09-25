@@ -10,7 +10,11 @@ export default async function AlbumsPage() {
       images: true,
       user: true,
     },
+    orderBy: {
+      createdAt: "asc",
+    },
   });
+
   return (
     <>
       <div className='albums-page'>
@@ -20,13 +24,16 @@ export default async function AlbumsPage() {
           </Link>
           <div className='albums'>
             {albums?.map((album) => {
+              const thumbnailImage =
+                album.images.find((img) => img.id === album.thumbnail) ||
+                album.images[0];
               return (
                 <div className='album' key={album.id}>
                   <AlbumCard
                     id={album.id}
                     title={album.title}
                     description={album.description}
-                    image={album.images[0]?.url}
+                    image={thumbnailImage?.url}
                     images={album.images}
                     createdAt={album.createdAt}
                     userName={album.user?.name}

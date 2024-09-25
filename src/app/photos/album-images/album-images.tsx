@@ -9,7 +9,7 @@ import NextJsImage from "@/components/lightbox-image";
 import Button from "@/components/button/button";
 import ConfirmationModal from "@/components/confirmation-modal/confirmation-modal";
 
-export default function AlbumImages({ album, session }) {
+export default function AlbumImages({ album, session, isAdmin }) {
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [index, setIndex] = useState(0);
@@ -49,6 +49,26 @@ export default function AlbumImages({ album, session }) {
     setShowModal(true);
   };
 
+  const setAsThumbnail = async (imageId: string) => {
+    try {
+      const res = await fetch(`/api/album/thumbnail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ albumId: album.id, imageId }),
+      });
+
+      if (res.ok) {
+        router.refresh();
+      } else {
+        console.error("Failed to set thumbnail", await res.text());
+      }
+    } catch (error) {
+      console.error("Error setting thumbnail", error);
+    }
+  };
+
   return (
     <div className='album-images-container'>
       {album?.images?.map((image, index: number) => {
@@ -62,7 +82,7 @@ export default function AlbumImages({ album, session }) {
               style={{ objectFit: "cover" }}
               onClick={() => handleClick(index)}
             />
-            {session?.user?.id === image.userId ? (
+            {session?.user?.id === image.userId || isAdmin ? (
               <>
                 <Button
                   buttonStyle='btn delete delete-image-button'
@@ -70,6 +90,14 @@ export default function AlbumImages({ album, session }) {
                 >
                   Delete
                 </Button>
+                {isAdmin && (
+                  <Button
+                    buttonStyle='btn primary thumbnail-button'
+                    onClick={() => setAsThumbnail(image.id)}
+                  >
+                    Set as Thumbnail
+                  </Button>
+                )}
               </>
             ) : null}
           </div>

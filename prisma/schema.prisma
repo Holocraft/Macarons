@@ -17,6 +17,7 @@ model Album {
   comments    Comment[]
   userId      String?
   user        User?     @relation(fields: [userId], references: [id])
+  thumbnail   String?
 
   @@index([createdAt])
   @@map("albums")
@@ -46,6 +47,7 @@ model User {
   id       String       @id @default(cuid())
   name     String
   email    String    @unique
+  isAdmin  Boolean  @default(false)
   albums   Album[]
   comments Comment[]
   images   Image[]
