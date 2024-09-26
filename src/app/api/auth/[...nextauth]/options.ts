@@ -32,9 +32,10 @@ export const options: NextAuthOptions = {
         });
 
         return true;
-      } else {
-        return "/unauthorized";
       }
+      // else {
+      //   return "/unauthorized";
+      // }
     },
     async session({ session, user }) {
       // Attach the user ID to the session object
