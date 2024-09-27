@@ -1,10 +1,19 @@
 .confirmation-modal-wrapper {
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   background-color: #fff;
   padding: 60px;
   border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
   .confirmation-modal {
     display: flex;
     flex-direction: column;
