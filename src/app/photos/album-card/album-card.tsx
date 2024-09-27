@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
 import placeholderImage from "../../../../public/placeholder.jpg";
 
 type AlbumImageProps = {
@@ -15,7 +16,7 @@ type AlbumImageProps = {
   userName: string;
 };
 
-export default function AlbumCard({
+export default async function AlbumCard({
   id,
   title,
   image,
@@ -23,6 +24,15 @@ export default function AlbumCard({
   createdAt,
   userName,
 }: AlbumImageProps) {
+  const comments = await prisma.comment.findMany({
+    where: {
+      albumId: id,
+    },
+    include: {
+      author: true,
+    },
+  });
+
   return (
     <Link href={`${paths.photos()}/${id}`} className='album-card-link'>
       <div className='album-card-container'>
@@ -37,13 +47,25 @@ export default function AlbumCard({
         </div>
         <div className='title-wrapper'>
           <h3 className='album-card-title'>{title}</h3>
-          <div className='photo-count'>
-            <FontAwesomeIcon icon={faCamera} />
-            <p>{`${
-              images?.length > 1
-                ? `${images?.length} photos`
-                : `${images?.length} photo`
-            }`}</p>
+          <div className='count-wrapper'>
+            <div className='photo-count'>
+              <FontAwesomeIcon icon={faCamera} />
+              <p>{`${
+                images?.length > 1 || images?.length === 0
+                  ? `${images?.length} photos`
+                  : `${images?.length} photo`
+              }`}</p>
+            </div>
+            {comments && (
+              <div className='comment-count'>
+                <FontAwesomeIcon icon={faComment} />
+                <p>{`${
+                  comments?.length > 1 || comments?.length === 0
+                    ? `${comments?.length} comments`
+                    : `${comments?.length} comment`
+                }`}</p>
+              </div>
+            )}
           </div>
           <p className='album-card-info'>{`Posted by: ${userName} on ${createdAt.toLocaleDateString(
             "en-US"

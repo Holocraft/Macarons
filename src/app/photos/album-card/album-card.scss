@@ -29,14 +29,19 @@
         text-overflow: ellipsis;
         color: $font-color;
       }
-      .photo-count {
+      .count-wrapper {
         display: flex;
-        align-items: center;
-        svg {
-          height: 15px;
-          color: gray;
-          margin-right: 5px;
-          margin-bottom: 2px;
+        .photo-count,
+        .comment-count {
+          display: flex;
+          align-items: center;
+          margin: 5px;
+          svg {
+            height: 15px;
+            color: gray;
+            margin-right: 5px;
+            margin-bottom: 2px;
+          }
         }
       }
       .album-card-info {
