@@ -1,9 +1,10 @@
-import paths from "@/paths";
+import prisma from "../../../../lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import paths from "@/paths";
 import placeholderImage from "../../../../public/placeholder.jpg";
 
 type AlbumImageProps = {
